@@ -1,0 +1,5 @@
+requests 2.30.0
+pandas 2.0.1
+beautifulsoup4 4.12.2
+python-steam-api 1.0.8
+tqdm 4.65.0
