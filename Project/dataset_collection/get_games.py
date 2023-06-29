@@ -27,8 +27,8 @@ def get_game_info(app_id):
         else:
             #print('Error: Unable to retrieve game information.')
             return {}
-    except requests.exceptions.RequestException as e:
-        print('Error: ', e)
+    except:
+        #print('Error: ', e)
         with open('output_files/error_log.txt', 'a') as F:
             F.write(f'{app_id}\n')
         return {}
