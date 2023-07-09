@@ -39,27 +39,29 @@ else:
     resolved_app_ids = df_resolved['steam_appid'].tolist()
     app_ids = list(set(app_ids) - set(resolved_app_ids))
 
-with open('output_files/players.csv', 'a') as F:
-    with open('output_files/error_appid.csv', 'a') as F_1:
-        with open('output_files/resolved_appid.csv', 'a') as F_2:
+for app_id in tqdm(app_ids, total=len(app_ids)):
+    url = f'https://store.steampowered.com/appreviews/{app_id}?json=1&language=all&num_per_page=100'
+    time.sleep(1)
+    try:
+        response = requests.get(url)
+    except:
+        with open('output_files/error_appid.csv', 'a') as F_1:
+            writer_1 = csv.writer(F)     
+            writer.writerow([app_id])
+            continue
+    if response.status_code == 200:
+        data = response.json()
+        with open('output_files/players.csv', 'a') as F:
             writer = csv.writer(F)
-            writer_1 = csv.writer(F_1)
+            for review in data['reviews']:
+                player_id = review['author']['steamid']
+                if player_id not in players:
+                    players.add(player_id)
+                    writer.writerow([player_id])
+        with open('output_files/resolved_appid.csv', 'a') as F_2:
             writer_2 = csv.writer(F_2)
-            for app_id in tqdm(app_ids, total=len(app_ids)):
-                url = f'https://store.steampowered.com/appreviews/{app_id}?json=1&language=all&num_per_page=100'
-                time.sleep(1)
-                try:
-                    response = requests.get(url)
-                except:     
-                    writer_1.writerow([app_id])
-                    continue
-                if response.status_code == 200:
-                    data = response.json()
-                    for review in data['reviews']:
-                        player_id = review['author']['steamid']
-                        if player_id not in players:
-                            players.add(player_id)
-                            writer.writerow([player_id])
-                    writer_2.writerow([app_id])
-                else:
-                    writer_1.writerow([app_id])
+            writer_2.writerow([app_id])
+    else:
+        with open('output_files/error_appid.csv', 'a') as F_1:
+            writer_1 = csv.writer(F_1)
+            writer_1.writerow([app_id])
