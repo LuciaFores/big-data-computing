@@ -55,3 +55,64 @@ iter : 10
 rank : 15
 RegParam : 0.6
 RMSE : 1.0654
+
+
+
+
+
+                            *** K-MEANS short ***
+*******************************
+********* KMEANS_K_50 *********
+*******************************
+K : 50
+Silhouette coefficient computed with cosine distance: 0.035
+Within-cluster Sum of Squared Distances (using cosine distance): 11108.636
+
+*******************************
+******** KMEANS_K_150 *********
+*******************************
+K : 150
+Silhouette coefficient computed with cosine distance: 0.053
+Within-cluster Sum of Squared Distances (using cosine distance): 9725.881
+
+*******************************
+******** KMEANS_K_250 *********
+*******************************
+K : 250
+Silhouette coefficient computed with cosine distance: 0.057
+Within-cluster Sum of Squared Distances (using cosine distance): 9034.394
+
+*******************************
+******** KMEANS_K_300 *********
+*******************************
+K : 300
+Silhouette coefficient computed with cosine distance: 0.057
+Within-cluster Sum of Squared Distances (using cosine distance): 8779.382
+
+*******************************
+******** KMEANS_K_400 *********
+*******************************
+K : 400
+Silhouette coefficient computed with cosine distance: 0.053
+Within-cluster Sum of Squared Distances (using cosine distance): 8461.180
+
+*******************************
+******** KMEANS_K_650 *********
+*******************************
+K : 650
+Silhouette coefficient computed with cosine distance: 0.041
+Within-cluster Sum of Squared Distances (using cosine distance): 7927.008
+
+
+
+
+
+                            *** K-MEANS about ***
+*******************************
+********* KMEANS_K_50 *********
+*******************************
+K : 50
+Silhouette coefficient computed with cosine distance: 0.045
+Within-cluster Sum of Squared Distances (using cosine distance): 9798.283
+
+
